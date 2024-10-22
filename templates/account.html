@@ -1,0 +1,95 @@
+{% extends 'blank_layout.html' %}
+{% load static %}
+
+{% block banner %}
+
+
+{% endblock banner %}
+{% block content %}
+    <!-- Account Page -->
+    <div class="account-page">
+        <div class="container">
+            <div class="row">
+                <div class="col-2">
+                
+                    
+                    <div>
+                      
+                    </div>
+                    
+                    <img src="" width="100%">
+                </div>
+                <div class="col-2">
+                    <div class="form-container">
+                        {% if messages %}
+                        {% for message in messages %}
+                        <li>{{message}}</li>
+                        {% endfor %}
+                        {% endif %}
+                        <div class="form-btn">
+                            <span onclick="login()">Login</span>
+                            <span onclick="register()">Register</span>
+                            <hr id="Indicator">
+                        </div>
+                        <form id="LoginForm" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+
+                            <input type="text" name="username" placeholder="Username" autocomplete="off">
+                            <input type="password" name="password" placeholder="Password" autocomplete="off">
+                            <button type="submit" class="btn" name="login">Login</button>
+                            <a href="">Forget Password</a>
+                        </form>
+
+                        <form id="RegForm" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <input type="text" name="username" placeholder="Username" autocomplete="off"required>
+                            <input type="email" name="email" placeholder="Email" autocomplete="off"required>
+                            <input type="password" name="password" placeholder="Password" autocomplete="off" required>
+                            <input type="text" name="address" placeholder="address" autocomplete="off" required>
+                            <input type="text" name="phone" placeholder="phone" required>
+
+                            <button type="submit" class="btn" name="register">Register</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock content %}
+
+    {% block extrascripts %}
+
+        <!-- Toggle Form -->
+        <script>
+            var LoginForm = document.getElementById("LoginForm");
+            var RegForm = document.getElementById("RegForm");
+            var Indicator = document.getElementById("Indicator");
+            function register() {
+                RegForm.style.transform = "translatex(0px)";
+                LoginForm.style.transform = "translatex(0px)";
+                Indicator.style.transform = "translateX(100px)";
+    
+            }
+            function login() {
+                RegForm.style.transform = "translatex(300px)";
+                LoginForm.style.transform = "translatex(300px)";
+                Indicator.style.transform = "translate(0px)";
+    
+            }
+        </script>
+{%if register %}
+<script>
+    register()
+</script>
+{% else %}
+<script>
+    login()
+</script>
+{% endif %}
+    {% endblock extrascripts %}
+
+
+
+
