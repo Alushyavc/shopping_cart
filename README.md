@@ -11,9 +11,9 @@ Make sure the following packages are installed before running the project:
 •	tzdata==2024.2
 
  Accounts
-Admin Account
+1.Admin Account
 •	Username: admin
 •	Password: admin
-Sample User Account
+2.Sample User Account
 •	Username: user
 •	Password: user
